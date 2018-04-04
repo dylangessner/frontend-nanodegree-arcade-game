@@ -27,7 +27,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.reset = function () {
+Enemy.prototype.reset = function() {
   this.col = -1; // enemies always come from left of screen
   this.row = 83;
   // initial postion and random speed
@@ -39,13 +39,13 @@ Enemy.prototype.reset = function () {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function () {
+var Player = function() {
   this.reset();
 
   this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function () {
+Player.prototype.update = function() {
   if (this.playable) {
     this.x = this.col * 101;
     this.y = this.row * 83;
@@ -62,13 +62,13 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.reset = function () {
+Player.prototype.reset = function() {
   this.col = setRandomInt(0,5);
   this.row = 5; // always start at the bottom
   this.playable = true;
 };
 
-Player.prototype.handleInput = function (input) {
+Player.prototype.handleInput = function(input) {
   switch (input) {
     case 'left':
       this.col--;
@@ -100,10 +100,10 @@ function setRandomInt(min, max) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player ();
+var player = new Player();
 var allEnemies = [];
 for (let i = 0; i < 6; i++) {
-  allEnemies.push(new Enemy ());
+  allEnemies.push(new Enemy());
 }
 
 
