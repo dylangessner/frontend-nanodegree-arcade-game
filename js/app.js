@@ -29,11 +29,11 @@ Enemy.prototype.render = function() {
 
 Enemy.prototype.reset = function() {
   this.col = -1; // enemies always come from left of screen
-  this.row = 83;
+  this.row = setRandomInt(1,3);
   // initial postion and random speed
   this.x = this.col * 101;
-  this.y = this.row * setRandomInt(1,3);
-  this.speed = setRandomInt(1,100);
+  this.y = this.row * 83;
+  this.speed = setRandomInt(1,10);
 };
 
 // Now write your own player class
@@ -63,7 +63,7 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.reset = function() {
-  this.col = setRandomInt(0,5);
+  this.col = setRandomInt(0,4);
   this.row = 5; // always start at the bottom
   this.playable = true;
 };
@@ -94,7 +94,7 @@ Player.prototype.handleInput = function(input) {
 // will be used to pick initial positions for enemies and player
 // and set initial speeds for enemies
 function setRandomInt(min, max) {
-  return Math.floor(Math.random * (min - max)) + min;
+  return Math.floor(Math.random * (max - min)) + min;
 };
 
 // Now instantiate your objects.
