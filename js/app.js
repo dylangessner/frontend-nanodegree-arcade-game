@@ -21,6 +21,15 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 6 * 83) { // only 6 columns in the game
       this.reset();
     }
+
+    const collisionRad = 30;
+    // handles collisions
+    // if the player's x & y coordiantes are within the collision radius
+    // send player back to the beginning
+    if ((player.x > this.x - collisionRad && player.x < this.x - collisionRad + this.width) &&
+    (player.y > this.y - collisionRad && player.y < this.y - collisionRad + this.height)) {
+      player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -34,7 +43,10 @@ Enemy.prototype.reset = function() {
   // initial postion and random speed
   this.x = this.col * 101;
   this.y = this.row * 83;
-  this.speed = setRandomInt(1,100);
+  this.speed = setRandomInt(100,400);
+  // size of bugs for collisions
+  this.width = 100;
+	this.height = 75;
 };
 
 // Now write your own player class
