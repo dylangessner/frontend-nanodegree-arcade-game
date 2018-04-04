@@ -16,7 +16,8 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += this.speed * dt;
+    this.x += (this.speed * dt);
+    this.y = this.row * 83;
     if (this.x > 6 * 83) { // only 6 columns in the game
       this.reset();
     }
@@ -29,11 +30,11 @@ Enemy.prototype.render = function() {
 
 Enemy.prototype.reset = function() {
   this.col = -1; // enemies always come from left of screen
-  this.row = setRandomInt(1,3);
+  this.row = setRandomInt(1,4);
   // initial postion and random speed
   this.x = this.col * 101;
   this.y = this.row * 83;
-  this.speed = setRandomInt(1,10);
+  this.speed = setRandomInt(1,100);
 };
 
 // Now write your own player class
@@ -94,7 +95,7 @@ Player.prototype.handleInput = function(input) {
 // will be used to pick initial positions for enemies and player
 // and set initial speeds for enemies
 function setRandomInt(min, max) {
-  return Math.floor(Math.random * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 // Now instantiate your objects.
